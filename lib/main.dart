@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
       // home: RegisterScreen(),
       initialRoute: ScreenNames.root,
       routes: routes,
-
     );
   }
 }

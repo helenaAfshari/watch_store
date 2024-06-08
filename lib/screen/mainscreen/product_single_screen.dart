@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BasketScreen extends StatelessWidget {
-  const BasketScreen({super.key});
+class ProductSingleScreen extends StatelessWidget {
+  const ProductSingleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromARGB(255, 218, 150, 150),
+      color: Colors.white,
       height: double.infinity,
       width: double.infinity,
+      child: Text("صفحه جزییات محصول"),
     );
   }
 }
