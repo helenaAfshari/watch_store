@@ -1,14 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:watch_store_app/component/text_style.dart';
 import 'package:watch_store_app/gen/assets.gen.dart';
 import 'package:watch_store_app/res/colors.dart';
-import 'package:watch_store_app/res/dimens.dart';
 import 'package:watch_store_app/res/strings.dart';
 import 'package:watch_store_app/screen/mainscreen/basket_screen.dart';
-import 'package:watch_store_app/screen/mainscreen/product_list_screen.dart';
-import 'package:watch_store_app/screen/mainscreen/home_screen.dart';
+import 'package:watch_store_app/screen/mainscreen/multi_landscape/homeScreen/home_screen_multy_land_scape.dart';
 import 'package:watch_store_app/screen/mainscreen/profile_screen.dart';
 import 'package:watch_store_app/widgets/btm_nav_item.dart';
 
@@ -75,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
             children: [
            Navigator(
             key: _homeKey,
-            onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const HomeScreen(),),),
+            onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const MultyLandScapeHomeScreen(),),),
            Navigator(
             key: _basketKey,
             onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const BasketScreen(),),),

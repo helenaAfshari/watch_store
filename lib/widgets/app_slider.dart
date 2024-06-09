@@ -36,7 +36,7 @@ class _AppSliderState extends State<AppSlider> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-     height: 300,
+    //  height: 300,
      width: double.infinity,
      child: Column(
        children: [
