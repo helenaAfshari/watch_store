@@ -105,8 +105,8 @@ class HomeScreen extends StatelessWidget {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(" ${6000000}تومان"),
-                                    Text("122,000",style: AppTextStyles.oldPriceStyle,),
+                                    Text(" ${6000000.separateWithComma}تومان",style: AppTextStyles.title,),
+                                    Text(8000000.separateWithComma,style: AppTextStyles.oldPriceStyle,),
                                   ],
                                 ),
                                 Container(
@@ -120,11 +120,11 @@ class HomeScreen extends StatelessWidget {
                                 )
                               ],
                             ),
-                            AppDimens.large.height,
+                            AppDimens.medium.height,
                             Container(height: 2,width: double.infinity,color: Colors.blue,),
                             AppDimens.medium.height,
 
-                            Text("09:26:22"),
+                            Text("09:26:22",style: AppTextStyles.prodTimerStyle,),
                         ]) ,
                       );
                     },),
@@ -155,11 +155,14 @@ class VerticalText extends StatelessWidget {
           children: [
             Row(
               children: [
-                SvgPicture.asset(Assets.svg.back),
+                Transform.rotate(
+                  angle: 1.5,
+                  child: SvgPicture.asset(Assets.svg.back)),
+                  AppDimens.medium.width,
                 Text(AppStrings.viewAll),
               ],
             ),
-            Text("شگفت انگیز"),
+            Text("شگفت انگیز",style: AppTextStyles.amazingStyle,),
           ],
         ),
       ),
