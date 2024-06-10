@@ -8,6 +8,7 @@ import 'package:watch_store_app/res/dimens.dart';
 import 'package:watch_store_app/res/strings.dart';
 import 'package:watch_store_app/widgets/app_slider.dart';
 import 'package:watch_store_app/widgets/category_widget.dart';
+import 'package:watch_store_app/widgets/product_item.dart';
 import 'package:watch_store_app/widgets/search_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -79,55 +80,9 @@ class HomeScreen extends StatelessWidget {
                       itemCount: 8,
                       shrinkWrap: true,
                       reverse: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        padding: EdgeInsets.all(AppDimens.small),
-                        margin: const EdgeInsets.all(AppDimens.medium),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(AppDimens.medium),
-                          gradient:const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors:  AppColors.productBgGradiant),
-                        ),
-                        //color: Colors.black,
-                        width: 200,
-                        child:Column(
-                          children: [
-                          Image.asset(Assets.png.unnamed.path),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text("ساعت مردانه",style: AppTextStyles.productTitle,)),
-                            AppDimens.medium.height,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(" ${6000000.separateWithComma}تومان",style: AppTextStyles.title,),
-                                    Text(8000000.separateWithComma,style: AppTextStyles.oldPriceStyle,),
-                                  ],
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(AppDimens.small*.5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(60),
-                                    color: Colors.red,
-                                  
-                                  ),
-                                  child: Text("20 %"),
-                                )
-                              ],
-                            ),
-                            AppDimens.medium.height,
-                            Container(height: 2,width: double.infinity,color: Colors.blue,),
-                            AppDimens.medium.height,
-
-                            Text("09:26:22",style: AppTextStyles.prodTimerStyle,),
-                        ]) ,
-                      );
-                    },),
+                    itemBuilder: (context, index) =>
+                  ProductItem(productName: "productName",price: 200,),
+                    ),
                   ),
                 VerticalText()
                 ],
@@ -141,6 +96,8 @@ class HomeScreen extends StatelessWidget {
 
   }
 }
+
+
 
 class VerticalText extends StatelessWidget {
   const VerticalText({super.key});

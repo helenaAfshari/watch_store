@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_app/component/themes.dart';
 import 'package:watch_store_app/route/names.dart';
 import 'package:watch_store_app/route/routes.dart';
+import 'package:watch_store_app/screen/get_otp_screen.dart';
+import 'package:watch_store_app/screen/mainscreen/product_list_screen.dart';
+import 'package:watch_store_app/screen/register_screen.dart';
 
 
 void main() {
@@ -17,9 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightTheme(),
       title: 'Flutter Demo',
-      // home: RegisterScreen(),
-      initialRoute: ScreenNames.root,
-      routes: routes,
+     home: ProductListScreen(),
+      // initialRoute: ScreenNames.root,
+      // routes: routes,
     );
   }
 }
