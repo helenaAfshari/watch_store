@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:watch_store_app/component/extention.dart';
+import 'package:watch_store_app/component/text_style.dart';
 import 'package:watch_store_app/gen/assets.gen.dart';
 import 'package:watch_store_app/res/dimens.dart';
+import 'package:watch_store_app/widgets/app_bar.dart';
+import 'package:watch_store_app/widgets/cart_badge.dart';
+import 'package:watch_store_app/widgets/product_item.dart';
 
 class ProductListScreen extends StatelessWidget {
   const ProductListScreen({super.key});
@@ -13,9 +16,9 @@ class ProductListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(CupertinoIcons.cart),
+            CartBadge(count: 1,),
             Row(
               children: [
                 Text("پرفروش ترین ها"),
@@ -27,36 +30,60 @@ class ProductListScreen extends StatelessWidget {
             }, icon: SvgPicture.asset(Assets.svg.close))
           ],
         ) ),
-        body: Container(
-          color: Colors.white,
-          height: double.infinity,
-          width: double.infinity,
-          child: Center(child: Text("لیست محصولات")),
-        ),
+        body: const Column(
+          children: [
+            TagList(),
+            ProductGridView(),
+          ],
+        )
       ),
     );
   }
 }
 
 
-class CustomAppBar extends StatelessWidget implements PreferredSize {
-   CustomAppBar(
-    {
-    super.key,
-   required this.child,
-    });
-    //چون که اجباری بود حتما میخواست  child رو ما هم این جوری نوشتیم 
-   @override
-   final Widget child;
+class TagList extends StatelessWidget {
+  const TagList({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-    preferredSize: preferredSize, 
-    child: child,
+    return Padding(padding: EdgeInsets.symmetric(vertical: AppDimens.medium),
+    child: SizedBox(height: 24,
+    child: ListView.builder(
+      reverse: true,
+      scrollDirection: Axis.horizontal,
+      itemBuilder:(context, index) {
+      return  Container(
+        padding: EdgeInsets.symmetric(horizontal: AppDimens.small),
+        margin: EdgeInsets.symmetric(horizontal: AppDimens.small),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(AppDimens.large),
+        ),
+        child: Text("نیوفورس",style: AppTextStyles.tagTitle,),
+      );
+    },) ,),
     );
   }
-  
+}
+
+
+class ProductGridView extends StatelessWidget {
+  const ProductGridView({super.key});
   @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(50);
+  Widget build(BuildContext context) {
+    return Expanded(
+    child: GridView.builder(
+      itemCount: 30,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 2,
+      childAspectRatio: 0.7,
+      // mainAxisSpacing: 2,
+      crossAxisSpacing: 2,
+    
+      ), 
+      itemBuilder: (context, index) => 
+      ProductItem(productName: "productName", price: 100),),
+     );
+  }
 }

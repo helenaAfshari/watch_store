@@ -8,6 +8,7 @@ import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/bas
 import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/homescreen/home_screen_multy_land_scape.dart';
 import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/profileScreen/profile_screen_multy_land_scape.dart';
 import 'package:watch_store_app/widgets/btm_nav_item.dart';
+import 'package:watch_store_app/widgets/cart_badge.dart';
 
 
 class BtmNavScreenIdex{
@@ -98,12 +99,14 @@ class _MainScreenState extends State<MainScreen> {
                 isActive: selectedIndex == BtmNavScreenIdex.profile,  
                  onTap:()=> btmNavOnPressed(index: BtmNavScreenIdex.profile),
                ),
-                BtmNavItem(
-                iconSvgPath: Assets.svg.cart, 
-                text: AppStrings.basket, 
-                isActive: selectedIndex == BtmNavScreenIdex.basket, 
-                onTap:()=> btmNavOnPressed(index: BtmNavScreenIdex.basket),
-                ),
+              
+                  BtmNavItem(
+                  count: 2,
+                  iconSvgPath: Assets.svg.cart, 
+                  text: AppStrings.basket, 
+                  isActive: selectedIndex == BtmNavScreenIdex.basket, 
+                  onTap:()=> btmNavOnPressed(index: BtmNavScreenIdex.basket),
+                  ),
                 BtmNavItem(
                 iconSvgPath: Assets.svg.home, 
                 text: AppStrings.home, 
