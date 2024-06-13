@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:watch_store_app/res/dimens.dart';
-import 'package:watch_store_app/screen/multilandscapescreens/cart_multilandscape/cart_screen.dart';
-import 'package:watch_store_app/screen/multilandscapescreens/cart_multilandscape/tablet_cart.dart';
+import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/cart_multilandscape/cart_screen.dart';
+import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/cart_multilandscape/tablet_cart.dart';
 
 class MultiLandScapeCartScreen extends StatelessWidget {
   const MultiLandScapeCartScreen({super.key});

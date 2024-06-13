@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:watch_store_app/gen/assets.gen.dart';
 import 'package:watch_store_app/res/colors.dart';
 import 'package:watch_store_app/res/strings.dart';
-import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/basketScreen/basket_screen_multi_land_scape.dart';
-import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/basketscreen/basket_screen.dart';
+import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/cart_multilandscape/multi_landscape_cart.dart';
 import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/homescreen/home_screen_multy_land_scape.dart';
 import 'package:watch_store_app/screen/mainscreen/multi_landscapeMainScreens/profileScreen/profile_screen_multy_land_scape.dart';
 import 'package:watch_store_app/widgets/btm_nav_item.dart';
-import 'package:watch_store_app/widgets/cart_badge.dart';
 
 
 class BtmNavScreenIdex{
@@ -76,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
             onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const MultyLandScapeHomeScreen(),),),
            Navigator(
             key: _basketKey,
-            onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const MultyLandScapeBasketScreen(),),),
+            onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const MultiLandScapeCartScreen(),),),
            Navigator(
             key: _profileKey,
             onGenerateRoute: (settings) => MaterialPageRoute(builder: (context) => const MultyLandScapeProfileScreen(),),),
