@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class TabletGetOtp extends StatelessWidget {
-  const TabletGetOtp({super.key});
+class TabletVerifyCode extends StatelessWidget {
+  const TabletVerifyCode({super.key});
 
   @override
   Widget build(BuildContext context) {

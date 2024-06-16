@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 
-class TabletSendOtp extends StatelessWidget {
-  const TabletSendOtp({super.key});
+class TabletSendSms extends StatelessWidget {
+  const TabletSendSms({super.key});
 
   @override
   Widget build(BuildContext context) {
