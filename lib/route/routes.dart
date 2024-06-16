@@ -9,7 +9,7 @@ import 'package:watch_store_app/screen/multilandscapescreens/productlist_multila
 import 'package:watch_store_app/screen/multilandscapescreens/register_multilandscape/multi_landscape_register.dart';
 
 Map<String,Widget Function (BuildContext)> routes = {
- ScreenNames.root : (context) => MultiLandScapeSendSmsScreen(),
+ ScreenNames.sendSmsScreen : (context) => MultiLandScapeSendSmsScreen(),
  ScreenNames.verifyCodeScreen : (context) => MultiLandScapeVerifyCodeScreen(),
  ScreenNames.registerScreen : (context) => MultiLandScapeRegisterScreen(),
  ScreenNames.mainScreen : (context) => MultyLandScapeMainScreen(),

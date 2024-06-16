@@ -1,17 +1,27 @@
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:watch_store_app/component/extention.dart';
 import 'package:watch_store_app/res/dimens.dart';
 import 'package:watch_store_app/res/strings.dart';
 import 'package:watch_store_app/route/names.dart';
+import 'package:watch_store_app/utils/image_handler.dart';
 import 'package:watch_store_app/widgets/app_bar.dart';
 import 'package:watch_store_app/widgets/app_text_field.dart';
 import 'package:watch_store_app/widgets/avatar.dart';
 import 'package:watch_store_app/widgets/main_button.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
    RegisterScreen({super.key});
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
     TextEditingController _controllerNameLastName = TextEditingController();
+
+   ImageHandler imageHandler = ImageHandler();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +45,11 @@ SafeArea(
           children: [
             AppDimens.large.height,
 
-            Avatar(),
+            Avatar(onTap:()async=>await imageHandler.pickedCropImage(
+          source: ImageSource.gallery).then((value) => setState(() {
+            
+          }) ), 
+            file: imageHandler.getImage),
     
             AppTextField(lable: AppStrings.nameLastName, hint: AppStrings.hintNameLastName, 
             controller: _controllerNameLastName), 
