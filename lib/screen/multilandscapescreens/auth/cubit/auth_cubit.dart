@@ -71,6 +71,8 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  
+
   registration()async{
     
   }

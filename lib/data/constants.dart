@@ -17,6 +17,8 @@ class Endpoints {
 }
 
 class ProductSortRoutes {
+  //چون که مدل هاشون اینا تقریبا باهم یکی هست 
+  //جداشون کردیم در یک کلاس متفاوت
   static const newestProducts = "/newest_products";
   static const cheapestProducts = "/cheapest_products";
   static const mostExpensiveProducts = "/most_expensive_products";
