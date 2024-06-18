@@ -27,7 +27,7 @@ class ProductRemoteDataSrc implements IProductDataSrc{
    await httpClient.get(Endpoints.productsByBrand+id.toString());
    //اینجا میخواییم validat میکنیم
    HttpResponseValidator.isValidStatusCode(response.statusCode!);
-   for(var element in (response.data['data'] as List)){
+   for(var element in (response.data['all_products']['data'] as List)){
     products.add(Product.fromJson(element));
    }
    return products;
@@ -40,7 +40,7 @@ class ProductRemoteDataSrc implements IProductDataSrc{
    await httpClient.get(Endpoints.productsByCategory+id.toString());
    //اینجا میخواییم validat میکنیم
    HttpResponseValidator.isValidStatusCode(response.statusCode!);
-   for(var element in (response.data['data'] as List)){
+   for(var element in (response.data['all_products']['data'] as List)){
     products.add(Product.fromJson(element));
    }
    return products;
@@ -53,7 +53,8 @@ class ProductRemoteDataSrc implements IProductDataSrc{
    await httpClient.get(Endpoints.baseUrl+routeParam);
    //اینجا میخواییم validat میکنیم
    HttpResponseValidator.isValidStatusCode(response.statusCode!);
-   for(var element in (response.data['data'] as List)){
+   //اینجا حتما باید پیمایش بشه و بریزه تو لیست پروداکت و برگرداند
+   for(var element in (response.data['all_products']['data'] as List)){
     products.add(Product.fromJson(element));
    }
    return products;
@@ -66,7 +67,7 @@ class ProductRemoteDataSrc implements IProductDataSrc{
    await httpClient.get(Endpoints.baseUrl+searchKey);
    //اینجا میخواییم validat میکنیم
    HttpResponseValidator.isValidStatusCode(response.statusCode!);
-   for(var element in (response.data['data'] as List)){
+   for(var element in (response.data['all_products']['data'] as List)){
     products.add(Product.fromJson(element));
    }
    return products;
