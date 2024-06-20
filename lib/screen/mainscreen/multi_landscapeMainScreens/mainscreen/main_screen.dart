@@ -30,6 +30,15 @@ class _MainScreenState extends State<MainScreen> {
   final GlobalKey<NavigatorState> _homeKey = GlobalKey();
   final GlobalKey<NavigatorState> _basketKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
+  
+   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+
+
   late final map = {
    BtmNavScreenIdex.home:_homeKey,
    BtmNavScreenIdex.basket:_basketKey,

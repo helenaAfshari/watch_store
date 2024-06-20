@@ -9,6 +9,7 @@ import 'package:watch_store_app/res/dimens.dart';
 import 'package:watch_store_app/res/strings.dart';
 import 'package:watch_store_app/route/names.dart';
 import 'package:watch_store_app/screen/multilandscapescreens/auth/cubit/auth_cubit.dart';
+import 'package:watch_store_app/utils/format_time.dart';
 import 'package:watch_store_app/widgets/app_text_field.dart';
 import 'package:watch_store_app/widgets/main_button.dart';
 
@@ -46,15 +47,7 @@ startTimer(){
 
 }
 
-//2:2
-String formatTime(int sec){
-  int min = sec ~/60;
-  int seconds = sec % 60;
-  //دوتا کاراکتر بیاد سمت چپ
-  String minStr = min.toString().padLeft(2,"0");
-  String secondsStr = seconds.toString().padLeft(2,"0");
-  return '$minStr:$secondsStr';
-}
+
   @override
   Widget build(BuildContext context) {
     //modalRoute

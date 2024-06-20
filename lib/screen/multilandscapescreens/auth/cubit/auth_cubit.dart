@@ -9,14 +9,24 @@ import 'package:watch_store_app/utils/shared_prefrences_managment.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
+     String? token = SharedPrefrencesManager().getString(SharedPrefrencesConstants.token);
+
   AuthCubit() : super(AuthInitial()){
+    if (token != null && token!.isNotEmpty) {
+      emit(LoggedInState());
+      print("LogIn:::::::");
+    } else {
+      emit(LoggedOutState());
+      print("LoooggggOtttt::::");
+    }
+  }
     //checked token
     //isStore == true => login
     // emit(LoggedInState());
     //isStore = false => logout
     // emit(LoggedOutState());
-    emit(LoggedOutState());
-  }
+    // emit(LoggedOutState());
+    // print("iiiiii");
 
   Dio _dio = Dio();
   sendSms(String mobile) async {
@@ -29,7 +39,8 @@ class AuthCubit extends Cubit<AuthState> {
      await _dio.post(Endpoints.sendSms,data: {"mobile":mobile})
      .then((value){
        debugPrint(value.toString());
-       if(value.statusCode == 201){       
+       if(value.statusCode == 201){     
+        print("jjjjj");  
         emit(SendState(mobile: mobile));
        }else{
         emit(ErrorState());

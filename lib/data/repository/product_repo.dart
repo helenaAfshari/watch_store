@@ -1,9 +1,10 @@
 
+import 'package:dio/dio.dart';
 import 'package:watch_store_app/data/model/product.dart';
 import 'package:watch_store_app/data/src/product_data_src.dart';
 
 abstract class InterfaceProductRepo{
-  Future<List<Product>> getAllCategory(int id);
+  Future<List<Product>> getAllByCategory(int id);
   Future<List<Product>> getAllBrand(int id);
   Future<List<Product>> getSorted(String routeParam);
   Future<List<Product>> searchProducts(String searchKey);
@@ -21,8 +22,8 @@ class ProductRepository implements InterfaceProductRepo{
    _iProductDataSrc.getAllBrand(id);
   
   @override
-  Future<List<Product>> getAllCategory(int id) =>
-  _iProductDataSrc.getAllCategory(id);
+  Future<List<Product>> getAllByCategory(int id) =>
+  _iProductDataSrc.getAllByCategory(id);
   
   @override
   Future<List<Product>> getSorted(String routeParam) =>
@@ -33,3 +34,7 @@ class ProductRepository implements InterfaceProductRepo{
   _iProductDataSrc.searchProducts(searchKey);
 
 }
+
+
+//در بلاک بیلدر بهش دسترسی داشته باشم
+final productRepository = ProductRepository(ProductRemoteDataSrc(Dio()));

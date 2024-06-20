@@ -44,12 +44,12 @@ class CategoryWidget extends StatelessWidget {
             children: [
               SizedBox(
                 height: 60,
-                child: SvgPicture.asset(iconPath,)),
+                child: Image.network(iconPath,)),
             ],
           ),
         ),
         const SizedBox(height: AppDimens.small*.5,),
-        Text(title,style: AppTextStyles.title.copyWith(fontSize: 16),),
+        Text(title,style: AppTextStyles.title.copyWith(fontSize: 12),),
       ],
     );
   }
