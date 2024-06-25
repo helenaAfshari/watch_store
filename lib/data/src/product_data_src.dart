@@ -3,9 +3,11 @@
 import 'package:dio/dio.dart';
 import 'package:watch_store_app/data/constants.dart';
 import 'package:watch_store_app/data/model/product.dart';
+import 'package:watch_store_app/data/model/product_details.dart';
 import 'package:watch_store_app/utils/response_validator.dart';
 
 abstract class IProductDataSrc{
+   Future<ProductDetailes> getProductDetails(int id);
     //چون که مدل هاشون اینا تقریبا باهم یکی هست 
   Future<List<Product>> getAllByCategory(int id);
   Future<List<Product>> getAllBrand(int id);
@@ -71,6 +73,13 @@ class ProductRemoteDataSrc implements IProductDataSrc{
     products.add(Product.fromJson(element));
    }
    return products;
+  }
+  
+  @override
+  Future<ProductDetailes> getProductDetails(int id) async {
+     final response = await httpClient.get(Endpoints.productDetails+id.toString());
+     HttpResponseValidator.isValidStatusCode(response.statusCode??0);
+     return ProductDetailes.fromJson(response.data['data'][0]);
   }
 
 }

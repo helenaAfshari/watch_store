@@ -77,6 +77,7 @@ class HomeScreen extends StatelessWidget {
                               shrinkWrap: true,
                               reverse: true,
                               itemBuilder: (context, index) => ProductItem(
+                              id: state.home.amazingProducts[index].id,
                                 specialExpiration: state.home.amazingProducts[index].specialExpiration,
                                 productName: state.home.amazingProducts[index].title,
                                 price: state.home.amazingProducts[index].price,

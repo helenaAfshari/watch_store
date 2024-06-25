@@ -8,6 +8,7 @@ import 'package:watch_store_app/component/text_style.dart';
 import 'package:watch_store_app/gen/assets.gen.dart';
 import 'package:watch_store_app/res/colors.dart';
 import 'package:watch_store_app/res/dimens.dart';
+import 'package:watch_store_app/screen/multilandscapescreens/product_single_multilandscape/product_single_screen.dart';
 import 'package:watch_store_app/utils/format_time.dart';
 
 class ProductItem extends StatefulWidget {
@@ -19,12 +20,14 @@ class ProductItem extends StatefulWidget {
     //این همون تایم هست
     this.specialExpiration = "",
     this.oldPrice=0,
+    required this.id,
   });
    final productName;
    final int price;
    final int oldPrice;
    final discount;
    final specialExpiration;
+   final id;
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -67,63 +70,66 @@ late Timer _timer;
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(AppDimens.small),
-      margin: const EdgeInsets.all(AppDimens.medium),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimens.medium),
-        gradient:const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors:  AppColors.productBgGradiant),
-      ),
-      //color: Colors.black,
-      width: 200,
-      child:Column(
-        children: [
-        Image.asset(Assets.png.unnamed.path),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Text(widget.productName,style: AppTextStyles.productTitle,)),
-          AppDimens.medium.height,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("${widget.price.separateWithComma}تومان",style: AppTextStyles.title,),
-                  Visibility(
-                    visible: widget.discount>0 ? true:false,
-                    child: Text(widget.oldPrice.separateWithComma,style: AppTextStyles.oldPriceStyle,)),
-                ],
-              ),
-              Visibility(
-                visible: _duration.inSeconds>0?true:false,
-                child: Container(
-                  padding: EdgeInsets.all(AppDimens.small*.5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
-                    color: Colors.red,
-                  
-                  ),
-                  child: Text("${widget.discount}%"),
+    return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ProductSingleScreen(id: widget.id,),)),
+      child: Container(
+        padding: EdgeInsets.all(AppDimens.small),
+        margin: const EdgeInsets.all(AppDimens.medium),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppDimens.medium),
+          gradient:const LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors:  AppColors.productBgGradiant),
+        ),
+        //color: Colors.black,
+        width: 200,
+        child:Column(
+          children: [
+          Image.asset(Assets.png.unnamed.path),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(widget.productName,style: AppTextStyles.productTitle,)),
+            AppDimens.medium.height,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("${widget.price.separateWithComma}تومان",style: AppTextStyles.title,),
+                    Visibility(
+                      visible: widget.discount>0 ? true:false,
+                      child: Text(widget.oldPrice.separateWithComma,style: AppTextStyles.oldPriceStyle,)),
+                  ],
                 ),
-              )
-            ],
-          ),
-          AppDimens.medium.height,
-          Visibility(
-            visible: _duration.inSeconds>0 ? true:false,
-            child: Container(height: 2,width: double.infinity,color: Colors.blue,)),
-          AppDimens.medium.height,
-
-          Visibility(
-            visible: widget.specialExpiration>0?true:false,
-            child: Text(
-              formatTime(insecond),
-            style: AppTextStyles.prodTimerStyle,)),
-      ]) ,
+                Visibility(
+                  visible: _duration.inSeconds>0?true:false,
+                  child: Container(
+                    padding: EdgeInsets.all(AppDimens.small*.5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(60),
+                      color: Colors.red,
+                    
+                    ),
+                    child: Text("${widget.discount}%"),
+                  ),
+                )
+              ],
+            ),
+            AppDimens.medium.height,
+            Visibility(
+              visible: _duration.inSeconds>0 ? true:false,
+              child: Container(height: 2,width: double.infinity,color: Colors.blue,)),
+            AppDimens.medium.height,
+    
+            Visibility(
+              visible: widget.specialExpiration>0?true:false,
+              child: Text(
+                formatTime(insecond),
+              style: AppTextStyles.prodTimerStyle,)),
+        ]) ,
+      ),
     );
   }
   
