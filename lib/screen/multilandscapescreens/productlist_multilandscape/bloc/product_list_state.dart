@@ -16,4 +16,6 @@ final class ProductListLoaded extends ProductListState{
 //اینجا زمانی که لودد شد میخواییم یک لیست بهمون برگردونه
   final List<Product> productList ;
   const ProductListLoaded(this.productList);
+  @override
+  List<Object> get props =>productList;
 }

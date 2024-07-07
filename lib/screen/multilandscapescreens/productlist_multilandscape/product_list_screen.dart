@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:watch_store_app/component/text_style.dart';
+import 'package:watch_store_app/data/repository/cart_repo.dart';
 import 'package:watch_store_app/data/repository/product_repo.dart';
 import 'package:watch_store_app/gen/assets.gen.dart';
 import 'package:watch_store_app/res/dimens.dart';
@@ -29,9 +30,13 @@ class ProductListScreen extends StatelessWidget {
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CartBadge(
-                  count: 1,
-                ),
+                ValueListenableBuilder(valueListenable: cartRepository.cartCount, 
+                builder: (context, value, child) {
+                  return  CartBadge(
+                  count: value,
+                );
+                },),
+               
                 Row(
                   children: [
                     Text("پرفروش ترین ها"),
@@ -39,7 +44,9 @@ class ProductListScreen extends StatelessWidget {
                   ],
                 ),
                 IconButton(
-                    onPressed: () {}, icon: SvgPicture.asset(Assets.svg.close))
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }, icon: SvgPicture.asset(Assets.svg.close))
               ],
             )),
             body: Column(
@@ -64,12 +71,8 @@ class ProductListScreen extends StatelessWidget {
                         ),
                         itemBuilder: (context, index) =>
                             ProductItem(
-                             id: state.productList[index].id,
-                              productName: state.productList[index].title,
-                              discount: state.productList[index].discount,
-                              oldPrice:state.productList[index].discountPrice ,
-                              specialExpiration: state.productList[index].specialExpiration,                             
-                              price: state.productList[index].price,),
+                              product: state.productList[index],
+                            ),
                       ),
                     );
                     }else if(state is ProductListError){

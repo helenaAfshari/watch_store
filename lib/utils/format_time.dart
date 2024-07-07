@@ -13,9 +13,9 @@ String formatTime(int sec){
   int s = duration.inSeconds.remainder(60);
   //3600 یک ساعت
   if (sec>3600) {
-    resultFormat = "$h:$m$s";
+    resultFormat = "$h:$m:$s";
   } else {
-        resultFormat = "$m$s";
+        resultFormat = "$m:$s";
 
   }
    return resultFormat;

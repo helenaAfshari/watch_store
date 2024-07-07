@@ -27,25 +27,28 @@ class CategoryWidget extends StatelessWidget {
 
     return Column(
       children: [
-        Container(
-          margin: EdgeInsets.all(AppDimens.small),
-          height: size.height*.1,
-          width: size.height*.1,
-          decoration: BoxDecoration(
-            gradient:  LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            colors: colors,
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            margin: EdgeInsets.all(AppDimens.small),
+            height: size.height*.1,
+            width: size.height*.1,
+            decoration: BoxDecoration(
+              gradient:  LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              colors: colors,
+              ),
+              borderRadius: BorderRadius.circular(AppDimens.large),
             ),
-            borderRadius: BorderRadius.circular(AppDimens.large),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 60,
-                child: Image.network(iconPath,)),
-            ],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 60,
+                  child: Image.network(iconPath,)),
+              ],
+            ),
           ),
         ),
         const SizedBox(height: AppDimens.small*.5,),

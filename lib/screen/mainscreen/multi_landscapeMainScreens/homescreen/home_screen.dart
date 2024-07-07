@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     AppSlider(imgList:state.home.sliders),
                    SizedBox(
-                    height: 400,
+                    height: 150,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: state.home.categories.length,
@@ -51,10 +51,12 @@ class HomeScreen extends StatelessWidget {
                         return CategoryWidget(
                           title: state.home.categories[index].title, 
                           onTap: (){
+                            
                             state.home.categories[index].id;
                             // print("Id is : ${state.home.categories[index].id}");
                             //to product list screen
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListScreen(
+                            Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => ProductListScreen(
                            param:   state.home.categories[index].id
                             ),));
                           }, 
@@ -62,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                           iconPath: state.home.categories[index].image);
                       },),
                    ),
-                    AppDimens.large.height,
+                     AppDimens.large.height,
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       reverse: true,
@@ -76,12 +78,16 @@ class HomeScreen extends StatelessWidget {
                               itemCount: state.home.amazingProducts.length,
                               shrinkWrap: true,
                               reverse: true,
+                              // itemBuilder: (context, index) {
+                              //   return Text("ggg");
+                              // },
                               itemBuilder: (context, index) => ProductItem(
-                              id: state.home.amazingProducts[index].id,
-                                specialExpiration: state.home.amazingProducts[index].specialExpiration,
-                                productName: state.home.amazingProducts[index].title,
-                                price: state.home.amazingProducts[index].price,
-                                discount: state.home.amazingProducts[index].discount,
+                                product: state.home.amazingProducts[index],
+                              // id: state.home.amazingProducts[index].id,
+                              //   specialExpiration: state.home.amazingProducts[index].specialExpiration,
+                              //   productName: state.home.amazingProducts[index].title,
+                              //   price: state.home.amazingProducts[index].price,
+                              //   discount: state.home.amazingProducts[index].discount,
                               ),
                             ),
                           ),
