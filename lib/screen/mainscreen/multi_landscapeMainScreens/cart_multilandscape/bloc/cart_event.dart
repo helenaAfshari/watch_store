@@ -31,6 +31,9 @@ class DeleteFromCartEvent extends CartEvent{
   List<Object> get props => [productId];
 }
 
+class PayEvent extends CartEvent {}
+
+
 // part of 'cart_bloc.dart';
 
 // sealed class CartEvent extends Equatable {

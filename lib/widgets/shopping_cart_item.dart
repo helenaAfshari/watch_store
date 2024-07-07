@@ -29,16 +29,16 @@ class _ShopingCartItemState extends State<ShopingCartItem> {
     final cartBloc = BlocProvider.of<CartBloc>(context);
     return SurfaceContainer(
       child: 
-          // Row(
-            // children: [
+          Row(
+            children: [
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                  Text(widget.cartModel.product,style: AppTextStyles.productTitle.copyWith(fontSize: 12),),
-                    // Text("ثبت ${price.separateWithComma}تومان",style: AppTextStyles.caption,),
-                    // Text("با تخفیف ${oldPrice.separateWithComma}",style: AppTextStyles.caption.copyWith(
-                    //   color: AppColors.primaryColor),),
+                     Text("ثبت ${widget.cartModel.price.separateWithComma}تومان",style: AppTextStyles.caption,),
+                    Text("با تخفیف ${widget.cartModel.discountPrice.separateWithComma}",style: AppTextStyles.caption.copyWith(
+                      color: AppColors.primaryColor),),
                     Divider(),
                     Row(
                       children: [
@@ -80,9 +80,10 @@ IconButton(onPressed: () {
                   ],
                 ),
               ),
-            // ],
-          // ),
-          // Image.asset(Assets.png.unnamed.path,height: 110,),
+          Image.network(widget.cartModel.image,height: 110,),
+
+            ],
+          ),
      
       );
   }

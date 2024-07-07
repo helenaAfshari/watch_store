@@ -48,6 +48,8 @@ class UserCart {
 
   factory UserCart.fromJson(Map<String, dynamic> json) {
     List<dynamic> userCartJson = json['user_cart'];
+    //اینجا جیسون رو با متد مپ تبدیل کردیم به لیست 
+    //هر ایتم رو هر ابجکت رو با کانستراکتور نام گذاری شده که نوشتیم جیسون تبدیل کنیم به یک کارت مدل ایتم و بعد همرو تبدیل کنیم به لیست
     List<CartModel> cartList =
         userCartJson.map((e) => CartModel.fromJson(e)).toList();
 
